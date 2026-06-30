@@ -48,16 +48,16 @@ export const PROJECTS_CONFIG = [
      
     {
         id: "unique-id-4",
-        title: "SARK GYM",
-        tagline: "No Limits Just Results: Elevate Your Fitness Journey with SARK GYM",
-        tech: ["React.js", "Node.js", "Three.js"],
+        title: "Community_hero",
+        tagline: "Every neighbourhood deserves to be seen. Every problem deserves to be solved.",
+        tech: ["HTML"," CSS","Vanilla JS","Leaflet ","Gemini AI" ,"Supabase" ],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/sark_gym_2.png",
+        image: "/showcase_photo/community_hero.png",
 
         // Required: local demo video path (mp4/webm)
-        videoSrc: "./showcase_video/sark_gym_2.mp4",
-        liveUrl: "https://darshil877.github.io/gym_demo_shark.5/"
+        videoSrc: "./showcase_video/community_hero.mp4",
+        liveUrl: "https://darshil877.github.io/community_hero/index.html"
     },
 
     {
@@ -116,6 +116,20 @@ export const PROJECTS_CONFIG = [
         videoSrc: "./showcase_video/music-app.mp4",
         liveUrl: "https://darshil877.github.io/music_app/"
     },
+    {
+        id: "unique-id-9",
+        title: "SARK GYM",
+        tagline: "No Limits Just Results: Elevate Your Fitness Journey with SARK GYM",
+        tech: ["React.js", "Node.js", "Three.js"],
+
+        // Optional: keep if you have local/remote images
+        image: "/showcase_photo/sark_gym_2.png",
+
+        // Required: local demo video path (mp4/webm)
+        videoSrc: "./showcase_video/sark_gym_2.mp4",
+        liveUrl: "https://darshil877.github.io/gym_demo_shark.5/"
+    },
+
 
 
 
