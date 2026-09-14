@@ -1,0 +1,22 @@
+1. Move into your project folder
+Bash-
+cd "D:/code/code/project/portfolio website/2" 
+(if this doesn't work use this - cd /d "D:\code\code\project\portfolio website\main")
+
+
+
+2. Pull down any recent website edits
+Bash-
+git pull origin master
+(Now that you are in the correct folder, this command will work perfectly and sync your laptop with GitHub).
+
+
+
+
+3. Add and push your new video
+Once the pull is complete, you can drop your new video file into your project folder and run your standard routine to push it live:
+
+Bash-
+git add .
+git commit -m "Added new showcase video"
+git push origin master
