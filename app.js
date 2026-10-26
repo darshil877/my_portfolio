@@ -379,42 +379,31 @@ function initHologramHoverMatrix() {
 }
 
 /* --------------------------------------------------------------------------
-   3. ULTRA-SMOOTH CUSTOM CYBER CURSOR ENGINE
+   3. LIVE PROJECTS COUNTER ENGINE
    -------------------------------------------------------------------------- */
-function initCustomCyberCursor() {
-  const dot = document.querySelector('.custom-cursor-dot');
-  const ring = document.querySelector('.custom-cursor-ring');
-  if (!dot || !ring) return;
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let ringX = 0;
-  let ringY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
-    dot.style.opacity = '1';
-  });
-
-  function renderCursorAnimation() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
-    ring.style.left = `${ringX}px`;
-    ring.style.top = `${ringY}px`;
-    requestAnimationFrame(renderCursorAnimation);
+async function initLiveProjectsCounter() {
+  const countEl = document.getElementById('live-projects-count');
+  if (!countEl) {
+    console.error('Missing #live-projects-count element');
+    return;
   }
-  renderCursorAnimation();
 
-  const interactiveElements = document.querySelectorAll(
-    'a, button, input, textarea, .hologram-tilt-card, canvas'
-  );
-  interactiveElements.forEach((el) => {
-    el.addEventListener('mouseenter', () => ring.classList.add('interactive'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('interactive'));
-  });
+  try {
+    const { PROJECTS_CONFIG } = await import('./projects-config.js');
+    if (!Array.isArray(PROJECTS_CONFIG)) {
+      console.error('PROJECTS_CONFIG is not an array');
+      return;
+    }
+    const liveCount = PROJECTS_CONFIG.filter((item) => {
+      if (!item || typeof item.liveUrl !== 'string') return false;
+      const url = item.liveUrl.trim();
+      return url.startsWith('http://') || url.startsWith('https://');
+    }).length;
+
+    countEl.textContent = String(liveCount);
+  } catch (err) {
+    console.error('Failed to load projects-config for live counter:', err);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -511,7 +500,13 @@ window.addEventListener('DOMContentLoaded', () => {
     console.error(e);
   }
   try {
-    initCustomCyberCursor();
+    import('./milestones/milestones-renderer.js')
+      .then((m) => m.renderMilestones())
+      .catch((e) => console.error('Milestones failed to load:', e));
+  } catch (e) { console.error(e); }
+
+  try {
+    initLiveProjectsCounter();
   } catch (e) {
     console.error(e);
   }
