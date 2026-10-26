@@ -575,9 +575,15 @@ function initTechStackScene() {
   controls.autoRotateSpeed = 0.85;
 
   const clock = new THREE.Clock();
+  let isVisible = false;
+  const observer = new IntersectionObserver(([entry]) => {
+    isVisible = entry.isIntersecting;
+  });
+  observer.observe(canvas);
 
   function animateTechStack() {
     requestAnimationFrame(animateTechStack);
+    if (!isVisible) return;
 
     const time = clock.getElapsedTime();
     handleSceneResize(renderer, camera);
@@ -652,9 +658,15 @@ function initContactScene() {
   controls.autoRotateSpeed = 1.2;
 
   const clock = new THREE.Clock();
+  let isVisible = false;
+  const observer = new IntersectionObserver(([entry]) => {
+    isVisible = entry.isIntersecting;
+  });
+  observer.observe(canvas);
 
   function animateContact() {
     requestAnimationFrame(animateContact);
+    if (!isVisible) return;
 
     const time = clock.getElapsedTime();
     handleSceneResize(renderer, camera);

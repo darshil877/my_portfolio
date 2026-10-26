@@ -77,21 +77,22 @@ const FILES = {
             { type: 'comment', text: '- Technical Rigor & Focus // Deep layout control, high-quality type safety, and clean code documentation.' },
             { type: 'comment', text: '- Elite Creative Domain // Active technical collaborator translating raw project briefs into polished masterpieces.' },
             { type: 'comment', text: '- Security & Precision // Formulating clean, secure data handshake channels across the full app infrastructure.' },
-            { type: 'code', text: '' },
-            { type: 'code', text: 'IMPLEMENTATION DIRECTIONS:' },
-            { type: 'attr', text: '- Inject these exact text strings into the auto-typing animation array of your script component.' },
-            { type: 'attr', text: '- Ensure all existing CSS color variables (neon cyans for strings/attributes, fuchsias for keywords, desaturated slates for tags/comments) apply smoothly to this new text layout.' },
-            { type: 'attr', text: '- Maintain the vertical grid borders, the bottom monitoring tray (\u2018FPS: 71.70\u2019, \u2018STATUS: COMPILED // SUCCESS\u2019), and do not disrupt any other element on the web page.' },
         ],
     },
 };
 
 
+let typingRun = 0;
+
 function progressiveType(preEl, blocks) {
+    typingRun++;
+    const myRun = typingRun;
+
     preEl.innerHTML = '';
     let i = 0;
 
     const step = () => {
+        if (myRun !== typingRun) return;
         if (i >= blocks.length) return;
 
         const b = blocks[i];
@@ -104,6 +105,7 @@ function progressiveType(preEl, blocks) {
         let j = 0;
 
         const charStep = () => {
+            if (myRun !== typingRun) return;
             j++;
             line.textContent = target.slice(0, j);
             const done = j >= target.length;

@@ -107,21 +107,23 @@ async function orchestrateDynamicProjects() {
       cardWrapper.appendChild(topContentWrapper);
 
       // --- NEW: Card Action Footer (Open Button) ---
-      const actionContainer = document.createElement('div');
-      actionContainer.className = 'p-6 pt-0 flex items-center gap-3';
+      const hasValidLiveUrl = typeof project.liveUrl === 'string' &&
+        (project.liveUrl.trim().startsWith('http://') || project.liveUrl.trim().startsWith('https://'));
 
-      const liveLink = project.liveUrl ? project.liveUrl : '#';
-      const targetAttr = project.liveUrl ? 'target="_blank" rel="noopener noreferrer"' : '';
+      if (hasValidLiveUrl) {
+        const actionContainer = document.createElement('div');
+        actionContainer.className = 'p-6 pt-0 flex items-center gap-3';
 
-      actionContainer.innerHTML = `
-        <a href="${liveLink}" ${targetAttr} class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-violet-500/20 border border-violet-500/40 text-violet-200 hover:bg-violet-500/30 hover:border-violet-400 transition-all shadow-lg shadow-violet-500/10 project-card-action">
-          <span>Open</span>
-          <svg class="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-          </svg>
-        </a>
-      `;
-      cardWrapper.appendChild(actionContainer);
+        actionContainer.innerHTML = `
+          <a href="${project.liveUrl.trim()}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-violet-500/20 border border-violet-500/40 text-violet-200 hover:bg-violet-500/30 hover:border-violet-400 transition-all shadow-lg shadow-violet-500/10 project-card-action">
+            <span>Open</span>
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        `;
+        cardWrapper.appendChild(actionContainer);
+      }
 
       gridContainer.appendChild(cardWrapper);
 
@@ -260,8 +262,21 @@ async function initProjectsPortalWorkflow() {
         ? project.image
         : fallbackImg;
 
-      const liveLink = project.liveUrl ? project.liveUrl : '#';
-      const targetAttr = project.liveUrl ? 'target="_blank" rel="noopener noreferrer"' : '';
+      const hasValidLiveUrl = typeof project.liveUrl === 'string' &&
+        (project.liveUrl.trim().startsWith('http://') || project.liveUrl.trim().startsWith('https://'));
+
+      const actionMarkup = hasValidLiveUrl
+        ? `
+        <div class="p-6 pt-0 flex items-center gap-3">
+          <a href="${project.liveUrl.trim()}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-violet-500/20 border border-violet-500/40 text-violet-200 hover:bg-violet-500/30 hover:border-violet-400 transition-all shadow-lg shadow-violet-500/10 project-card-action" data-project-id="${project.id}">
+            <span>Open</span>
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+      `
+        : '';
 
       cardWrapper.innerHTML += `
         <div>
@@ -287,14 +302,7 @@ async function initProjectsPortalWorkflow() {
           </div>
         </div>
 
-        <div class="p-6 pt-0 flex items-center gap-3">
-          <a href="${liveLink}" ${targetAttr} class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-violet-500/20 border border-violet-500/40 text-violet-200 hover:bg-violet-500/30 hover:border-violet-400 transition-all shadow-lg shadow-violet-500/10 project-card-action" data-project-id="${project.id}">
-            <span>Open</span>
-            <svg class="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
-          </a>
-        </div>
+        ${actionMarkup}
       `;
 
       cardWrapper.dataset.projectId = project.id || '';

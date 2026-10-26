@@ -12,7 +12,7 @@ export const PROJECTS_CONFIG = [
         tech: ["html", "Node.js", "mediPipe"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/neurolearn.png",
+        image: "./showcase_photo/neurolearn.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/neurolearn.mp4",
@@ -26,7 +26,7 @@ export const PROJECTS_CONFIG = [
         tech: ["html", "CSS", "js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/equiflow.png",
+        image: "./showcase_photo/equiflow.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/equiflow.mp4",
@@ -39,7 +39,7 @@ export const PROJECTS_CONFIG = [
         tech: ["html", "CSS", "js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/financial_helper.png",
+        image: "./showcase_photo/financial_helper.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/financial_helper.mp4",
@@ -53,7 +53,7 @@ export const PROJECTS_CONFIG = [
         tech: ["React.js", "Node.js", "Three.js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/cafe.png",
+        image: "./showcase_photo/cafe.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/cafe.mp4",
@@ -67,7 +67,7 @@ export const PROJECTS_CONFIG = [
         tech: ["React.js", "Node.js", "Three.js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/lhc_gym.png",
+        image: "./showcase_photo/lhc_gym.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/lhc_gym.mp4",
@@ -80,7 +80,7 @@ export const PROJECTS_CONFIG = [
         tech: ["html", "CSS", "js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/interior_design.png",
+        image: "./showcase_photo/interior_design.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/interior_design.mp4",
@@ -95,7 +95,7 @@ export const PROJECTS_CONFIG = [
         tech: ["React.js", "Node.js", "Three.js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/clinic_web.png",
+        image: "./showcase_photo/clinic_web.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/clinic_demo.mp4",
@@ -109,7 +109,7 @@ export const PROJECTS_CONFIG = [
         tech: ["HTML"," CSS","Vanilla JS","Leaflet ","Gemini AI" ,"Supabase" ],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/community_hero.png",
+        image: "./showcase_photo/community_hero.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/community_hero.mp4",
@@ -123,7 +123,7 @@ export const PROJECTS_CONFIG = [
         tech: ["React.js", "Node.js", "Three.js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/fitness_tracker.png",
+        image: "./showcase_photo/fitness_tracker.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/fitness_tracker.mp4",
@@ -138,7 +138,7 @@ export const PROJECTS_CONFIG = [
         tech: ["React.js", "Node.js", "Three.js"],
 
         // Optional: keep if you have local/remote images
-        image: "/showcase_photo/sark_gym_2.png",
+        image: "./showcase_photo/sark_gym_2.png",
 
         // Required: local demo video path (mp4/webm)
         videoSrc: "./showcase_video/sark_gym_2.mp4",
